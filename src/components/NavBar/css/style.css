@@ -1,7 +1,14 @@
 .navBar{
-    background-color: #6d4c41;
+    /* background-color: #d7ccc8; */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 
 }
 .txt_white{
     color: #fff !important;
+}
+.logo{
+    width: 200px;
+}
+.img{
+    width: 100%;
 }
