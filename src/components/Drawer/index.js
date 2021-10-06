@@ -21,6 +21,7 @@ import "./css/style.css"
 import LocalMall from '@mui/icons-material/LocalMall';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import Slider from "../Slider"
+import InputText from "../Input"
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -96,6 +97,7 @@ export default function Catergory() {
                     <Typography variant="h6" noWrap component="div">
                         Catergories
                     </Typography>
+                    <InputText className="searchMain" type="search" label="Search"/>
 
                 </Toolbar>
             <Slider/>
@@ -114,9 +116,6 @@ export default function Catergory() {
                 open={open}
             >
                 <DrawerHeader className="d_Header">
-                    {/* <Typography variant="h6" noWrap component="div">
-                        Catergories
-                        </Typography> */}
                     <img className="dLogo" src={logo} alt="" />
                     <IconButton onClick={handleDrawerClose}>
                         {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
@@ -146,7 +145,7 @@ export default function Catergory() {
                 </List>
                 <Divider />
                 <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                    {['Construction Tools', 'Building Materials', 'Electric', 'Paint','Bathroom','Wallpapers','kitchen','Lighting','Hardware'].map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemIcon>
                                 {index % 2 === 0 ? <LocalMall /> : <MailIcon />}
@@ -155,7 +154,7 @@ export default function Catergory() {
                         </ListItem>
                     ))}
                 </List>
-                <Divider />
+                {/* <Divider />
                 <List>
                     {['All mail', 'Trash', 'Spam'].map((text, index) => (
                         <ListItem button key={text}>
@@ -165,7 +164,7 @@ export default function Catergory() {
                             <ListItemText primary={text} />
                         </ListItem>
                     ))}
-                </List>
+                </List> */}
             </Drawer>
             <Main open={open}>
                 <DrawerHeader />

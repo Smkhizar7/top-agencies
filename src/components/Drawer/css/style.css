@@ -18,6 +18,12 @@
 }
 .d_Header > img{
 width: 150px;
+}
+.css-1y7nk27-MuiInputBase-input-MuiOutlinedInput-input{
+    background-color: #fff !important;
+}
+.searchMain{
+    background: #fff !important;
 }   
 @media screen and (max-width: 770px) {
     .navMenu{
