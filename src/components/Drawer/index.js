@@ -20,7 +20,7 @@ import logo from "../../assets/images/logo.png"
 import "./css/style.css"
 import LocalMall from '@mui/icons-material/LocalMall';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
-
+import Slider from "../Slider"
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -98,6 +98,7 @@ export default function Catergory() {
                     </Typography>
 
                 </Toolbar>
+            <Slider/>
             </AppBar>
             <Drawer
                 sx={{
@@ -116,7 +117,7 @@ export default function Catergory() {
                     {/* <Typography variant="h6" noWrap component="div">
                         Catergories
                         </Typography> */}
-                        <img className="dLogo" src={logo} alt="" />
+                    <img className="dLogo" src={logo} alt="" />
                     <IconButton onClick={handleDrawerClose}>
                         {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                     </IconButton>
@@ -126,7 +127,7 @@ export default function Catergory() {
                     {['Cart', 'Sign In'].map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemIcon>
-                            {index % 2 === 0 ? <LocalMall /> : <LocationCityIcon />}
+                                {index % 2 === 0 ? <LocalMall /> : <LocationCityIcon />}
                             </ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItem>
@@ -148,7 +149,7 @@ export default function Catergory() {
                     {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemIcon>
-                            {index % 2 === 0 ? <LocalMall /> : <MailIcon />}
+                                {index % 2 === 0 ? <LocalMall /> : <MailIcon />}
                             </ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItem>
@@ -170,5 +171,6 @@ export default function Catergory() {
                 <DrawerHeader />
             </Main>
         </Box>
+
     );
 }
