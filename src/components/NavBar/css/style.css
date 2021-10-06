@@ -19,11 +19,20 @@
 .menuItem{
     text-align: center;
     display: block;
+    color: #5d4037 !important;
+    font-weight: 500 !important; 
+}
+.menuItem:hover{
+    color: #bcaaa4 !important;
 }
 .menuItem1{
     text-align: center;
     display: block;
-    /* width: 100%; */
+    font-weight: 500 !important;
+    color: #5d4037 !important;
+}
+.menuItem1:hover{
+    color: #bcaaa4 !important;
 }
 @media screen and (max-width: 770px) {
     .menuItem{

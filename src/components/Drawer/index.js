@@ -2,7 +2,6 @@ import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
@@ -17,7 +16,10 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import logo from "../../assets/images/logo.png"
 import "./css/style.css"
+import LocalMall from '@mui/icons-material/LocalMall';
+import LocationCityIcon from '@mui/icons-material/LocationCity';
 
 const drawerWidth = 240;
 
@@ -94,6 +96,7 @@ export default function Catergory() {
                     <Typography variant="h6" noWrap component="div">
                         Catergories
                     </Typography>
+
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -109,29 +112,43 @@ export default function Catergory() {
                 anchor="left"
                 open={open}
             >
-                <DrawerHeader>
+                <DrawerHeader className="d_Header">
+                    {/* <Typography variant="h6" noWrap component="div">
+                        Catergories
+                        </Typography> */}
+                        <img className="dLogo" src={logo} alt="" />
                     <IconButton onClick={handleDrawerClose}>
                         {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                     </IconButton>
                 </DrawerHeader>
+                <Divider className="navMenu1" />
+                <List className="navMenu1">
+                    {['Cart', 'Sign In'].map((text, index) => (
+                        <ListItem button key={text}>
+                            <ListItemIcon>
+                            {index % 2 === 0 ? <LocalMall /> : <LocationCityIcon />}
+                            </ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItem>
+                    ))}
+                </List>
                 <Divider className="navMenu" />
                 <List className="navMenu">
                     {['Products', 'Project Management', 'Deals', 'MemberShip'].map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                {index % 2 === 0 ? <LocalMall /> : <MailIcon />}
                             </ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItem>
                     ))}
                 </List>
                 <Divider />
-                <Divider />
                 <List>
                     {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                            {index % 2 === 0 ? <LocalMall /> : <MailIcon />}
                             </ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItem>

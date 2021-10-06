@@ -5,9 +5,27 @@
 
 .navMenu{
     display: none;
+}
+.navMenu1{
+    display: none;
+}
+/* .dlogo{
+    width: 150px !important;
+} */
+
+.d_Header{
+    justify-content: space-between !important;
+}
+.d_Header > img{
+width: 150px;
 }   
 @media screen and (max-width: 770px) {
     .navMenu{
+        display: block;
+    }   
+  }
+  @media screen and (max-width: 370px) {
+    .navMenu1{
         display: block;
     }   
   }
