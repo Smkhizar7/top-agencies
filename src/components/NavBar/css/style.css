@@ -8,7 +8,30 @@
 }
 .logo{
     width: 200px;
+    margin-left: 20px !important;
 }
 .img{
     width: 100%;
 }
+.myNavBar{
+    /* text-align: center; */
+}
+.menuItem{
+    text-align: center;
+    display: block;
+}
+.menuItem1{
+    text-align: center;
+    display: block;
+    /* width: 100%; */
+}
+@media screen and (max-width: 770px) {
+    .menuItem{
+        display: none;
+    }   
+  }
+  @media screen and (max-width: 370px) {
+    .menuItem1{
+        display: none;
+    }   
+  }
