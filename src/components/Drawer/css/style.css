@@ -1,0 +1,13 @@
+.myBar{
+    height: 60px !important;
+    background-color: #583A39 !important;
+}
+
+.navMenu{
+    display: none;
+}   
+@media screen and (max-width: 770px) {
+    .navMenu{
+        display: block;
+    }   
+  }
