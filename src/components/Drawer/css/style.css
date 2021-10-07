@@ -9,29 +9,46 @@
 .navMenu1{
     display: none;
 }
-/* .dlogo{
-    width: 150px !important;
-} */
-
+.myTool{
+    justify-content: space-between !important;
+}
 .d_Header{
     justify-content: space-between !important;
 }
 .d_Header > img{
 width: 150px;
 }
-.css-1y7nk27-MuiInputBase-input-MuiOutlinedInput-input{
-    background-color: #fff !important;
+.sideBtn{
+    color: #583A39 !important;
+}
+.sideBtn :hover{
+    background-color: #bcaaa4 !important;
 }
 .searchMain{
     background: #fff !important;
-}   
+    width: 60%;
+    flex:0.95;
+    display: flex;
+}  
+.searchD{
+display: none;
+} 
 @media screen and (max-width: 770px) {
     .navMenu{
         display: block;
     }   
   }
-  @media screen and (max-width: 370px) {
+  @media screen and (max-width: 380px) {
     .navMenu1{
         display: block;
     }   
+    .searchD{
+        display: flex;
+        }
+        .searchMain{
+          display: none;
+        }  
+        .myTool{
+            justify-content: flex-start !important;
+        }
   }

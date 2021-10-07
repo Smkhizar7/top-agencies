@@ -84,7 +84,7 @@ export default function Catergory() {
     return (
         <Box sx={{ display: 'flex' }}>
             <AppBar className="myBar" position="static" open={open}>
-                <Toolbar>
+                <Toolbar className="myTool">
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -97,14 +97,15 @@ export default function Catergory() {
                     <Typography variant="h6" noWrap component="div">
                         Catergories
                     </Typography>
-                    <InputText className="searchMain" type="search" label="Search"/>
-
+                    <div className="searchMain">
+                        <InputText placeholder="Search" type="search" btnType="submit" />
+                    </div>
                 </Toolbar>
-            <Slider/>
+                <Slider />
             </AppBar>
             <Drawer
                 sx={{
-                    width: drawerWidth,
+                    width: 0,
                     flexShrink: 0,
                     '& .MuiDrawer-paper': {
                         width: drawerWidth,
@@ -123,48 +124,134 @@ export default function Catergory() {
                 </DrawerHeader>
                 <Divider className="navMenu1" />
                 <List className="navMenu1">
-                    {['Cart', 'Sign In'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <LocalMall /> : <LocationCityIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
+                    <ListItem button key={"Cart"}>
+                        <ListItemIcon>
+                            <LocationCityIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={"Cart"} />
+                    </ListItem>
+                    <ListItem button key={"Sign In"}>
+                        <ListItemIcon>
+                            <LocationCityIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={"Sign In"} />
+                    </ListItem>
                 </List>
+                <Divider className="searchD" />
+                <div className="searchD">
+                        <InputText placeholder="Search" type="search" btnType="submit" />
+                    </div>
                 <Divider className="navMenu" />
                 <List className="navMenu">
-                    {['Products', 'Project Management', 'Deals', 'MemberShip'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <LocalMall /> : <MailIcon />}
+                    <div className="sideBtn">
+                        <ListItem button key={"Products"}>
+                            <ListItemIcon >
+                                <LocationCityIcon />
                             </ListItemIcon>
-                            <ListItemText primary={text} />
+                            <ListItemText primary={"Products"} />
                         </ListItem>
-                    ))}
+                    </div>
+                    <div className="sideBtn">
+                        <ListItem button key={"Project Management"}>
+                            <ListItemIcon>
+                                <LocationCityIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={"Project Management"} />
+                        </ListItem>
+                    </div>
+                    <div className="sideBtn">
+                        <ListItem button key={"Deals"}>
+                            <ListItemIcon>
+                                <LocationCityIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={"Deals"} />
+                        </ListItem>
+                    </div>
+                    <div className="sideBtn">
+                        <ListItem button key={"Membership"}>
+                            <ListItemIcon>
+                                <LocationCityIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={"Membership"} />
+                        </ListItem>
+                    </div>
                 </List>
                 <Divider />
                 <List>
-                    {['Construction Tools', 'Building Materials', 'Electric', 'Paint','Bathroom','Wallpapers','kitchen','Lighting','Hardware'].map((text, index) => (
-                        <ListItem button key={text}>
+                    <div className="sideBtn">
+                        <ListItem button key={"Construction Tools"}>
                             <ListItemIcon>
-                                {index % 2 === 0 ? <LocalMall /> : <MailIcon />}
+                                <LocationCityIcon />
                             </ListItemIcon>
-                            <ListItemText primary={text} />
+                            <ListItemText primary={"Construction Tools"} />
                         </ListItem>
-                    ))}
+                    </div>
+                    <div className="sideBtn">
+                        <ListItem button key={"Building Materials"}>
+                            <ListItemIcon>
+                                <LocationCityIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={"Building Materials"} />
+                        </ListItem>
+                    </div>
+                    <div className="sideBtn">
+                        <ListItem button key={"Electric"}>
+                            <ListItemIcon>
+                                <LocationCityIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={"Electric"} />
+                        </ListItem>
+                    </div>
+                    <div className="sideBtn">
+                        <ListItem button key={"Paint"}>
+                            <ListItemIcon>
+                                <LocationCityIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={"Paint"} />
+                        </ListItem>
+                    </div>
+                    <div className="sideBtn">
+                        <ListItem button key={"Bathroom"}>
+                            <ListItemIcon>
+                                <LocationCityIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={"Bathroom"} />
+                        </ListItem>
+                    </div>
+                    <div className="sideBtn">
+                        <ListItem button key={"Wallpapers"}>
+                            <ListItemIcon>
+                                <LocationCityIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={"Wallpapers"} />
+                        </ListItem>
+                    </div>
+                    <div className="sideBtn">
+                        <ListItem button key={"Kitchen"}>
+                            <ListItemIcon>
+                                <LocationCityIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={"Kitchen"} />
+                        </ListItem>
+                    </div>
+                    <div className="sideBtn">
+                        <ListItem button key={"Lighting"}>
+                            <ListItemIcon>
+                                <LocationCityIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={"Lighting"} />
+                        </ListItem>
+                    </div>
+                    <div className="sideBtn">
+                        <ListItem button key={"Hardware"}>
+                            <ListItemIcon>
+                                <LocationCityIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={"Hardware"} />
+                        </ListItem>
+                    </div>
                 </List>
-                {/* <Divider />
-                <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List> */}
+
             </Drawer>
             <Main open={open}>
                 <DrawerHeader />
