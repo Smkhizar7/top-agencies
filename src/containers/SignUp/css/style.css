@@ -1,0 +1,21 @@
+.myContainer{
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 2px solid rgba(133, 129, 129,0.5);
+    padding: 10px;
+}
+.inputs_fields{
+    width: 80%;
+    margin: 0 auto;
+}
+.mt-20{
+    margin-top:20px;
+}
+.mt-10{
+    margin-top: 10px;
+}
+.my_Heading{
+    font-size: 30px;
+}
