@@ -1,6 +1,6 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Formik } from 'formik';
-import { Container, Row, Col } from "react-bootstrap";
+// import { Container, Row, Col } from "react-bootstrap";
 import { Link, useHistory } from 'react-router-dom'
 import { createUserWithEmailAndPassword, auth } from '../../confiq/Firebase';
 import "./css/style.css"
@@ -22,6 +22,17 @@ let SignUp = () => {
                     else if (!values.ownerName) {
                         errors.ownerName = 'Required';
                     }
+                    else if (!values.contactPerson) {
+                        errors.contactPerson = 'Required';
+                    }
+                    else if (!values.contactNum) {
+                        errors.contactNum = 'Required';
+                    }
+                    else if (
+                        !/^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/g.test(values.contactNum)
+                        ) {
+                        errors.contactNum = 'example: 03001234567';
+                    }
                     else if (!values.email) {
                         errors.email = 'Required';
                     }
@@ -36,12 +47,6 @@ let SignUp = () => {
                     else if (values.password.length < 6) {
                         errors.password = 'Password must be atleast 6 digits';
                     }
-                    else if (!values.contactPerson) {
-                        errors.contactPerson = 'Required';
-                    }
-                    else if (!values.contactNum) {
-                        errors.contactNum = 'Required';
-                    }
                     return errors;
                 }}
                 onSubmit={(values, { setSubmitting }) => {
@@ -54,14 +59,11 @@ let SignUp = () => {
                                     'User as been register successfully!',
                                     'success'
                                 )
-                                console.log("agaya===>", res)
-                                // history.push('/')
+                                history.push('/')
                             })
-                            .catch((err) => {
-                                // setLoading(false)
-                                console.log("masla agaya==>", err)
+                            .catch((error) => {
+                                console.log(error.message)
                             })
-                        // alert(JSON.stringify(values, null, 2));
                         setSubmitting(false);
                     }, 400);
                 }}
@@ -82,10 +84,10 @@ let SignUp = () => {
                             </div>
                         <div className="inputs_fields mt-10">
                             <MyInputText
-                                error={errors.companyName}
+                                error={errors.companyName?true:false}
                                 type="text"
                                 label="Company Name"
-                                name="company Name"
+                                name="companyName"
                                 helperText={errors.companyName}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
@@ -97,13 +99,39 @@ let SignUp = () => {
                             <MyInputText
                                 type="text"
                                 fullWidth= {true}
-                                error={errors.lastName}
-                                helperText={errors.lastName}
-                                label="Last Name"
-                                name="lastName"
+                                error={errors.ownerName}
+                                helperText={errors.ownerName}
+                                label="Owner Name"
+                                name="ownerName"
                                 onChange={handleChange}
                                 onBlur={handleBlur}
-                                value={values.lastName}
+                                value={values.ownerName}
+                            />
+                        </div>
+                        <div className="inputs_fields mt-10">
+                            <MyInputText
+                                type="text"
+                                fullWidth= {true}
+                                error={errors.contactPerson}
+                                helperText={errors.contactPerson}
+                                label="Contact Person Name"
+                                name="contactPerson"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.contactPerson}
+                            />
+                        </div>
+                        <div className="inputs_fields mt-10">
+                            <MyInputText
+                                type="text"
+                                fullWidth= {true}
+                                error={errors.contactNum}
+                                helperText={errors.contactNum}
+                                label="Contact Person Number"
+                                name="contactNum"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.contactNum}
                             />
                         </div>
                         <div className="inputs_fields mt-10">

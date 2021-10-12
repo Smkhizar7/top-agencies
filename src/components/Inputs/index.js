@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TextField } from '@mui/material';
-export default function MyInputText({ label, error, type, onBlur, onChange,fullWidth }) {
+export default function MyInputText({name,label, error, type, onBlur, onChange,fullWidth ,helperText}) {
     return (
         <>
             <TextField
@@ -8,9 +8,10 @@ export default function MyInputText({ label, error, type, onBlur, onChange,fullW
                 onChange={onChange}
                 type={type}
                 error={error}
-                id={error ? "standard-error-helper-text": "standard-basic"}
+                id={error ? "standard-error-helper-text": "outlined-helperText"}
                 label={label}
-                helperText={error}
+                helperText={helperText}
+                name={name}
                 variant="standard"
                 fullWidth={fullWidth}
                 

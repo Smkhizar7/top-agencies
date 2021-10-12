@@ -2,7 +2,13 @@
     height: 60px !important;
     background-color: #583A39 !important;
 }
-
+.css-3v9zut{
+    min-height: 0px !important;
+}
+.css-ttn1xo{
+    padding: 0px !important;
+    width: 0px !important;
+}
 .navMenu{
     display: none;
 }
@@ -13,7 +19,9 @@
     justify-content: space-between !important;
 }
 .d_Header{
-    justify-content: space-between !important;
+    justify-content: space-around !important;
+    min-height: 80px !important;
+    width: 100%;
 }
 .d_Header > img{
 width: 150px;

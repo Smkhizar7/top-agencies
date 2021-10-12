@@ -8,7 +8,7 @@ function App() {
   return (
     <>
     <NavBar/>
-    {/* <Catergory/> */}
+    <Catergory/>
     {/* <Login/> */}
     {/* <Slider/> */}
     <SignUp/>

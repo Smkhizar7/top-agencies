@@ -101,7 +101,7 @@ export default function Catergory() {
                         <InputText placeholder="Search" type="search" btnType="submit" />
                     </div>
                 </Toolbar>
-                <Slider />
+                {/* <Slider /> */}
             </AppBar>
             <Drawer
                 sx={{
