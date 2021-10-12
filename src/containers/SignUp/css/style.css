@@ -18,4 +18,20 @@
 }
 .my_Heading{
     font-size: 30px;
+    color: #573a39;
+}
+.myBtn{
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+}
+.link{
+    text-decoration: none;
+    color: #583A39 !important;
+    font-weight: 600;
+}
+
+.link :hover{
+    background-color: #bcaaa4 !important;
 }

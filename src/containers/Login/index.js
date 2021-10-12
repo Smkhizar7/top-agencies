@@ -1,28 +1,106 @@
-import "./css/style.css"
-import { Container, Row, Col } from "react-bootstrap";
+import { Formik } from 'formik';
 import { Link, useHistory } from 'react-router-dom'
-import { InputText } from "../../components"
+import { signInWithEmailAndPassword, auth } from '../../confiq/Firebase';
+import "./css/style.css"
+import Swal from "sweetalert2"
+import { BasicButtons, MyInputText } from "../../components"
+
 
 
 let Login = () => {
+    const history = useHistory();
+    const Btn= "573a39"
     return (
-        <Container fluid>
-            <Col className="main">
-                <div className="justify-content-around mt-auto">
-                    <InputText type="email" className="myInput" Label="Email" title="email" />
-                    <InputText type="password" className="myInput" Label="Password" title="password" />
-
-                    <div className="myBtn">
-                        <button >Login</button>
-                    </div>
-                    <div>
-                        <h1>
-                            Register
-                        </h1>
-                    </div>
-                </div>
-            </Col>
-        </Container >
+        <div className="myContainer mt-20">
+            <Formik
+                initialValues={{ email: '', password: '' }}
+                validate={values => {
+                    const errors = {};
+                    if (!values.email) {
+                        errors.email = 'Required';
+                    }
+                    else if (
+                        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+                    ) {
+                        errors.email = 'Invalid email address';
+                    }
+                    else if (!values.password) {
+                        errors.password = 'Required';
+                    }
+                    else if (values.password.length < 6) {
+                        errors.password = 'Password must be atleast 6 digits';
+                    }
+                    return errors;
+                }}
+                onSubmit={(values, { setSubmitting }) => {
+                    setTimeout(() => {
+                        signInWithEmailAndPassword(auth, values.email, values.password)
+                            .then((res) => {
+                                // setLoading(false)
+                                Swal.fire(
+                                    'Sign In!',
+                                    'User as been sign in successfully!',
+                                    'success'
+                                )
+                                history.push('/')
+                            })
+                            .catch((error) => {
+                                console.log(error.message)
+                            })
+                        setSubmitting(false);
+                    }, 400);
+                }}
+            >
+                {({
+                    values,
+                    errors,
+                    touched,
+                    handleChange,
+                    handleBlur,
+                    handleSubmit,
+                    isSubmitting,
+                    /* and other goodies */
+                }) => (
+                    <form onSubmit={handleSubmit}>
+                        <div className="inputs_fields mt-10">
+                            <h1 className="my_Heading">Login In</h1>
+                            </div>
+                        
+                        <div className="inputs_fields mt-20">
+                            <MyInputText
+                                error={errors.email}
+                                type="email"
+                                fullWidth= {true}
+                                helperText={errors.email}
+                                label="Email"
+                                name="email"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.email}
+                            />
+                        </div>
+                        <div className="inputs_fields mt-20">
+                            <MyInputText
+                                type="password"
+                                fullWidth= {true}
+                                error={errors.password}
+                                helperText={errors.password}
+                                label="Password"
+                                name="password"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.password}
+                            />
+                        </div>
+                        <div className="myBtn">
+                            <BasicButtons type="submit" variant="contained" disabled={isSubmitting} fullWidth= "true" >Login</BasicButtons>                             </div>
+                        <div className="myBtn">
+                            <Link className="link" to="/signup">Register Now</Link>
+                        </div>
+                    </form>
+                )}
+            </Formik>
+        </div>
     )
 }
 

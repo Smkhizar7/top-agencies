@@ -1,29 +1,30 @@
-.css-hip9hq-MuiPaper-root-MuiAppBar-root{
-    background-color: #1b456f !important;
-}
-.main{
-    width: 40%;
-    background-color: #f5f8fc;
-    text-align: center;
-    margin: 5% auto;
-    border-radius: 10px;
+.myContainer{
+    width: 50%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    padding: 20px;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 2px solid rgba(133, 129, 129,0.5);
+    padding: 10px;
 }
-.main:hover{
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+.inputs_fields{
+    width: 80%;
+    margin: 0 auto;
 }
-.mt-auto{
-    margin: 20px auto;
+.mt-20{
+    margin-top:20px;
 }
-
-.css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
-    width: 80% !important;
-    margin-bottom: 20px !important;
+.mt-10{
+    margin-top: 10px;
 }
-.css-sghohy-MuiButtonBase-root-MuiButton-root{
-    width: 40%;
-    background-color: #1b456f !important;
-    margin: 5px 5px !important;
+.my_Heading{
+    font-size: 30px;
+    color: #573a39;
+}
+.myBtn{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.css-1fu7jd5-MuiButtonBase-root-MuiButton-root{
+    background-color: #573a39 !important;
 }

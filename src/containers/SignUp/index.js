@@ -5,7 +5,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { createUserWithEmailAndPassword, auth } from '../../confiq/Firebase';
 import "./css/style.css"
 import Swal from "sweetalert2"
-import { MyInputText } from "../../components"
+import { MyInputText,BasicButtons } from "../../components"
 
 
 let SignUp = () => {
@@ -161,9 +161,9 @@ let SignUp = () => {
                             />
                         </div>
                         <div className="myBtn">
-                            <button type="submit" disabled={isSubmitting}>Register</button>                             </div>
-                        <div>
-                            {/* <Link to="/">Login</Link> */}
+                            <BasicButtons type="submit" variant="contained" disabled={isSubmitting} fullWidth= "true" >Register</BasicButtons>                             </div>
+                        <div className="myBtn">
+                            <Link className="link" to="/">Login In</Link>
                         </div>
                     </form>
                 )}
