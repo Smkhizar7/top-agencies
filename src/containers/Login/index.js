@@ -3,8 +3,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { signInWithEmailAndPassword, auth } from '../../confiq/Firebase';
 import "./css/style.css"
 import Swal from "sweetalert2"
-import { BasicButtons, Catergory, MyInputText } from "../../components"
-import { Nav } from 'react-bootstrap';
+import { BasicButtons, Catergory, MyInputText, NavBar } from "../../components"
 
 
 
@@ -13,7 +12,7 @@ let Login = () => {
     const Btn= "573a39"
     return (
         <>
-        <Nav/>
+        <NavBar/>
         <Catergory/>
         <div className="myContainer mt-20">
             <Formik

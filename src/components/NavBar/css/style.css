@@ -32,6 +32,8 @@
     display: block;
     font-weight: 500 !important;
     color: #5d4037 !important;
+    text-decoration: none;
+    padding: 8px;
 }
 .menuItem1:hover{
     color: #bcaaa4 !important;

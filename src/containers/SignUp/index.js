@@ -166,7 +166,7 @@ let SignUp = () => {
                         <div className="myBtn">
                             <BasicButtons type="submit" variant="contained" disabled={isSubmitting} fullWidth= "true" >Register</BasicButtons>                             </div>
                         <div className="myBtn">
-                            <Link className="link" to="/">Login In</Link>
+                            <Link className="link" to="/login">Login In</Link>
                         </div>
                     </form>
                 )}

@@ -17,10 +17,10 @@ function NavBar() {
                         <Link className="menuItem" to="">Membership</Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link className="menuItem1" href="#deets">Cart</Nav.Link>
-                        <Nav.Link className="menuItem1"  eventKey={2} href="#memes">
+                        <Link className="menuItem1" to="">Cart</Link>
+                        <Link className="menuItem1"  eventKey={2} to="/login">
                             Sign In
-                        </Nav.Link>
+                        </Link>
                     </Nav>
                 </Navbar>
             </Container>
