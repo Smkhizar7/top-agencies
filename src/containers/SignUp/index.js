@@ -5,12 +5,15 @@ import { Link, useHistory } from 'react-router-dom'
 import { createUserWithEmailAndPassword, auth } from '../../confiq/Firebase';
 import "./css/style.css"
 import Swal from "sweetalert2"
-import { MyInputText,BasicButtons } from "../../components"
+import { MyInputText,BasicButtons, NavBar, Catergory } from "../../components"
 
 
 let SignUp = () => {
     const history = useHistory();
     return (
+        <>
+        <NavBar/>
+        <Catergory/>
         <div className="myContainer mt-20">
             <Formik
                 initialValues={{ companyName: '', ownerName: '', email: '', password: '', contactPerson: '', contactNum: '' }}
@@ -170,7 +173,7 @@ let SignUp = () => {
             </Formik>
         </div>
 
-
+</>
     )
 }
 

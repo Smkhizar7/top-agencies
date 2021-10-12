@@ -19,6 +19,8 @@
 .menuItem{
     text-align: center;
     display: block;
+    text-decoration: none;
+    padding: 8px;
     color: #5d4037 !important;
     font-weight: 500 !important; 
 }

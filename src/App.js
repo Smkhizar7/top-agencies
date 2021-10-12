@@ -8,8 +8,8 @@ import AppRouter from './confiq/Router';
 function App() {
   return (
     <>
-    <NavBar/>
-    <Catergory/>
+    {/* <NavBar/> */}
+    {/* <Catergory/> */}
     <AppRouter/>
     {/* <Login/> */}
     {/* <Slider/> */}

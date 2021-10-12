@@ -1,6 +1,7 @@
-import { Navbar, NavDropdown, Container, Nav } from "react-bootstrap";
+import { Navbar,Container, Nav } from "react-bootstrap";
 import "./css/style.css"
 import Logo from "../../assets/images/logo.png"
+import { Link, useHistory } from 'react-router-dom'
 function NavBar() {
     return (
         <Navbar className="navBar">
@@ -9,10 +10,11 @@ function NavBar() {
                 {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
                 <Navbar >
                     <Nav className="myNavBar">
-                        <Nav.Link className="menuItem" href="#features">Products</Nav.Link>
-                        <Nav.Link className="menuItem" href="#pricing">Project Management</Nav.Link>
-                        <Nav.Link className="menuItem"href="#pricing">Deals</Nav.Link>
-                        <Nav.Link className="menuItem"href="#pricing">Membership</Nav.Link>
+                        <Link className="menuItem" to="" >Products</Link>
+                        <Link className="menuItem" to="/signup">Register Now</Link>
+                        <Link className="menuItem" to="" >Project Management</Link>
+                        <Link className="menuItem" to="">Deals</Link>
+                        <Link className="menuItem" to="">Membership</Link>
                     </Nav>
                     <Nav>
                         <Nav.Link className="menuItem1" href="#deets">Cart</Nav.Link>
