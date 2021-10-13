@@ -5,7 +5,7 @@ import {
     Route,
 } from "react-router-dom";
 import { Login, SignUp, Home } from "../containers/index.js";
-import { NavBar } from "../components"
+import {NavBar} from "../components"
 
 function AppRouter() {
     return (

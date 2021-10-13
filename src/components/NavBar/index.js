@@ -11,14 +11,13 @@ function NavBar() {
                 <Navbar >
                     <Nav className="myNavBar">
                         <Link className="menuItem" to="" >Products</Link>
-                        <Link className="menuItem" to="/signup">Register Now</Link>
                         <Link className="menuItem" to="" >Project Management</Link>
                         <Link className="menuItem" to="">Deals</Link>
                         <Link className="menuItem" to="">Membership</Link>
                     </Nav>
                     <Nav>
-                        <Link className="menuItem1" to="">Cart</Link>
-                        <Link className="menuItem1"  eventKey={2} to="/login">
+                        <Link className="menuItem1" to="/signup">Register</Link>
+                        <Link className="menuItem1" to="/login">
                             Sign In
                         </Link>
                     </Nav>
