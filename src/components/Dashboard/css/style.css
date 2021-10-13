@@ -1,0 +1,16 @@
+.box{
+    width: 300px;
+    height: 100px;
+    background-color: rgb(114, 13, 114) !important;
+    color: white !important;
+}
+.box > h4{
+    margin: 25px auto;
+}
+.orders{
+    display: flex !important;
+    margin-top: 10px !important;
+    margin-right: 10px !important;
+    width: 300px !important;
+    padding: 0px !important;
+}
