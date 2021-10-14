@@ -4,8 +4,8 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
-import { Login, SignUp, Home,Profile } from "../containers/index.js";
-import { Dashboard } from "../components/index.js"
+import { Login, SignUp, Home, Profile } from "../containers/index.js";
+import { Dashboard, PendingOrders, CurrentOrders,OrderHistory } from "../components/index.js"
 
 function AppRouter() {
     return (
@@ -15,7 +15,18 @@ function AppRouter() {
                 <Route exact path="/" component={Profile} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={SignUp} />
-                <Route exact path="/dashboard" component={Dashboard} />
+                <Route exact path="/dashboard">
+                    <Profile><Dashboard /></Profile>
+                </Route>
+                <Route exact path="/pendingorders">
+                    <Profile><PendingOrders /></Profile>
+                </Route>
+                <Route exact path="/currentorders">
+                    <Profile><CurrentOrders /></Profile>
+                </Route>
+                <Route exact path="/orderhistory">
+                    <Profile><OrderHistory /></Profile>
+                </Route>
 
 
             </Switch>

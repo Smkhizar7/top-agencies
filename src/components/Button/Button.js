@@ -1,8 +1,8 @@
 import Button from '@mui/material/Button';
 import "./css/style.css"
 
-export default function BasicButtons({variant,type,fullWidth,children}) {
+export default function BasicButtons({onClick,variant,type,fullWidth,children}) {
   return (
-    <Button className="hello" variant={variant} type={type} fullWidth={fullWidth}>{children}</Button>
+    <Button onClick={onClick} className="hello" variant={variant} type={type} fullWidth={fullWidth}>{children}</Button>
   );
 }

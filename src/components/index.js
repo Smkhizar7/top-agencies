@@ -5,6 +5,10 @@ import Slider from "./Slider";
 import InputText from "./Input";
 import MyInputText from "./Inputs";
 import Dashboard from "./Dashboard";
+import PendingOrders from "./PendingOrders";
+import OrderHistory from "./OrderHistory";
+import CurrentOrders from "./CurrentOrders";
+
 export{
     BasicButtons,
     NavBar,
@@ -12,5 +16,8 @@ export{
     Slider,
     InputText,
     MyInputText,
-    Dashboard
+    Dashboard,
+    PendingOrders,
+    OrderHistory,
+    CurrentOrders
 }

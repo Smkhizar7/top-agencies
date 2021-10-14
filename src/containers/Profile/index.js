@@ -8,6 +8,7 @@ import Drawer from '@mui/material/Drawer';
 import "./css/style.css"
 import { Dashboard, NavBar, Slider } from "../../components";
 import { Link, useHistory } from 'react-router-dom'
+import { propTypes } from "react-bootstrap/esm/Image";
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -25,7 +26,7 @@ const DrawerHeader = styled(Paper)(({ theme }) => ({
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
 }));
-export default function Profile() {
+export default function Profile({children}) {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -38,17 +39,26 @@ export default function Profile() {
                     </DrawerHeader>
                     <ListItem button>
                         <ListItemText>
-                            <Link to="/dashboard">DashBoard</Link>
+                            <Link className="our_Link" to="/dashboard">DashBoard</Link>
                         </ListItemText>
                     </ListItem>
-                    <ListItem button key={"Cart"}>
-                        <ListItemText primary={"Cart"} />
+                    <ListItem button>
+                        <ListItemText>
+                            <Link className="our_Link" to="/pendingorders">Pending Orders</Link>
+                        </ListItemText>
                     </ListItem>
-                    <ListItem button key={"Cart"}>
-                        <ListItemText primary={"Cart"} />
+                    <ListItem button>
+                        <ListItemText>
+                            <Link className="our_Link" to="/currentorders">Current Order</Link>
+                        </ListItemText>
+                    </ListItem>
+                    <ListItem button>
+                        <ListItemText>
+                            <Link className="our_Link" to="/orderhistory">Order History</Link>
+                        </ListItemText>
                     </ListItem>
                 </Grid>
-                <Dashboard/>
+                {children}
             </Grid>
         </Box>
     );
