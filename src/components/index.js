@@ -8,6 +8,7 @@ import Dashboard from "./Dashboard";
 import PendingOrders from "./PendingOrders";
 import OrderHistory from "./OrderHistory";
 import CurrentOrders from "./CurrentOrders";
+import OrderForm from "./Form";
 
 export{
     BasicButtons,
@@ -19,5 +20,6 @@ export{
     Dashboard,
     PendingOrders,
     OrderHistory,
-    CurrentOrders
+    CurrentOrders,
+    OrderForm
 }
