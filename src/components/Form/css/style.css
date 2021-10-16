@@ -1,0 +1,25 @@
+.radio{
+    display: flex !important;
+    flex-direction: row !important;
+}
+.brands{
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto !important;
+    width: 80% !important;
+}
+.brands_div{
+    margin-left: 10px !important;
+}
+.modal_Inputs1{
+    display: flex;
+justify-content: space-around !important;
+width: 80%;
+margin: 0 auto;
+}
+@media screen and (max-width: 370px) {
+    .brands{
+        display: block;        
+        width: 80% !important;
+    }
+  }
