@@ -17,6 +17,16 @@ justify-content: space-around !important;
 width: 80%;
 margin: 0 auto;
 }
+.short_Input{
+    margin-left: 5px;
+}
+@media screen and (max-width: 540px) {
+    .modal_Inputs1{
+        display: block;
+
+    }
+  }
+
 @media screen and (max-width: 370px) {
     .brands{
         display: block;        
