@@ -16,6 +16,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function MyVerticallyCenteredModal(props) {
+    const [submit,setSubmit]=useState(false)
     return (
         <Modal
             {...props}
@@ -29,10 +30,10 @@ function MyVerticallyCenteredModal(props) {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <OrderForm/>
+                <OrderForm submit={submit}/>
             </Modal.Body>
             <Modal.Footer>
-                <BasicButtons onClick={props.onHide}>Save</BasicButtons>
+                <BasicButtons onClick={()=>setSubmit(true)}>Save</BasicButtons>
                 <BasicButtons onClick={props.onHide}>Close</BasicButtons>
             </Modal.Footer>
         </Modal>

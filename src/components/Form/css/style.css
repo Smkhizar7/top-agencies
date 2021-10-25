@@ -10,6 +10,7 @@
 }
 .brands_div{
     margin-left: 10px !important;
+    width: 40%;
 }
 .modal_Inputs1{
     display: flex;
@@ -20,16 +21,41 @@ margin: 0 auto;
 .short_Input{
     margin-left: 5px;
 }
-@media screen and (max-width: 540px) {
+.radioBtn{
+    display: flex;
+    justify-content: space-between;
+}
+.error{
+    color: red;
+}
+.ml-5{
+    margin-left: 15px;
+}
+@media screen and (max-width: 1000px) {
+    .brands{
+        display: block;        
+        width: 80% !important; 
+  }
+  .brands_div{
+     width: 100%;
+}
+}
+@media screen and (max-width: 700px) {
+    .brands{
+        display: block;        
+        width: 80% !important; 
+  }
+  .brands_div{
+     width: 100%;
+}
+}
+  @media screen and (max-width: 540px) {
     .modal_Inputs1{
         display: block;
 
     }
-  }
+    .radioBtn{
+        display: block;
 
-@media screen and (max-width: 370px) {
-    .brands{
-        display: block;        
-        width: 80% !important;
     }
   }
