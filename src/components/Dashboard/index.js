@@ -6,6 +6,7 @@ import Paper from '@mui/material/Paper';
 import { BasicButtons, MyInputText, OrderForm } from "..";
 import { Link, useHistory } from 'react-router-dom'
 import { Modal } from "react-bootstrap";
+import { db, collection, doc, setDoc } from "../../confiq/Firebase"; 
 import { useState } from "react";
 import React from 'react';
 import { Formik, Form, useField, Field } from 'formik';
@@ -34,6 +35,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function MyVerticallyCenteredModal(props) {
+    const [loading,setLoading] = useState(false);
     const Sigma = Yup.object({
         projectName: Yup.string()
             .max(15, 'Must be 15 characters or less')
@@ -89,12 +91,23 @@ function MyVerticallyCenteredModal(props) {
 
                     }}
                     validationSchema={Sigma}
-                    onSubmit={(values, actions) => {
-                        
-                        setTimeout(() => {
-                            alert(JSON.stringify(values, null, 2));
+                    onSubmit={async (values, actions) => {
+                        const newCityRef = doc(collection(db, "orders"));
+                        setLoading(true);
+                        await setDoc(newCityRef, {
+                            orderId:newCityRef.id,
+                            ...values,
+                            orderStatus:"pending"
+                        })
+                        .then((res)=>{
+                            setLoading(false);
                             actions.setSubmitting(false);
-                        }, 2000);
+                            props.onHide();
+                            alert("Order Added Successfully")
+                        })
+                        .catch((err)=>{
+                            alert("Err==>" + err);
+                        });
                     }}
 
                 >
@@ -219,7 +232,7 @@ function MyVerticallyCenteredModal(props) {
                                 />
                             </div>
                             <Modal.Footer className="modalFooter">
-                                <BasicButtons className="modalBtn" type="submit">Save</BasicButtons>
+                                <BasicButtons className="modalBtn" disabled={loading} type="submit">{loading?"Loading...":"Save"}</BasicButtons>
                                 <BasicButtons className="modalBtn" onClick={props.onHide}>Close</BasicButtons>
                             </Modal.Footer>
                         </Form>
