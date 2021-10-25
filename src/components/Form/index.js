@@ -19,9 +19,8 @@ const MySelect = ({ label, ...props }) => {
 };
 
 
-const OrderForm = (props) => {
-    console.log(props)
-    const Sigma = Yup.object({
+const OrderForm = () => {
+       const Sigma = Yup.object({
         projectName: Yup.string()
             .max(15, 'Must be 15 characters or less')
             .required('Required'),

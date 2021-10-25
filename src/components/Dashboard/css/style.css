@@ -27,3 +27,7 @@
     width: 80%;
     margin: 0 auto;
 }
+.modalFooter > button{
+    margin-left: 20px;
+
+}
