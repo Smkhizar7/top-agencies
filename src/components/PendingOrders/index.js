@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import { db,collection, query, where, onSnapshot } from "../../confiq/Firebase";
-import {DenseTable} from '../index';
+import { db, collection, query, where, onSnapshot } from "../../confiq/Firebase";
+import { DenseTable } from '../index';
+import "./css/style.css"
+import Grid from "@mui/material/Grid"
 
-export default function PendingOrders(){
-    const [pendingOrders,setPendingOrder] = useState([]);
-    useEffect(()=>{
+
+export default function PendingOrders() {
+    const [pendingOrders, setPendingOrder] = useState([]);
+    useEffect(() => {
         console.log("UseEffect start")
         const q = query(collection(db, "orders"), where("orderStatus", "==", "pending"));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -14,11 +17,26 @@ export default function PendingOrders(){
             });
             setPendingOrder(orders);
         });
-    },[])
-    return(
-        <div>
-            <h1>Pending Orders</h1>
-            <DenseTable rows={pendingOrders} />      
-        </div>
+    }, [])
+    return (
+        <>
+            <Grid
+                container
+                direction="row"
+                justifyContent="space-between"
+                alignItems="flex-start"
+                item xs={9}>
+                <Grid className="mt-20" container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                    <div className="pendingDiv">
+                        <h1>Pending Orders</h1>
+                    </div>
+                    <div className="pendingDiv">
+                        <DenseTable rows={pendingOrders} />
+                    </div>
+                </Grid>
+            </Grid>
+
+
+        </>
     )
 }
