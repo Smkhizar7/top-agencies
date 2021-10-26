@@ -31,6 +31,23 @@ margin: 0 auto;
 .ml-5{
     margin-left: 15px;
 }
+.modal_Inputs{
+    width: 80%;
+    margin: 0 auto;
+}
+.modalFooter{
+    display: flex;
+    justify-content: flex-end !important;
+}
+.modalFooter > button{
+    margin-left: 20px;
+
+}
+.myOrderBtn{
+    margin: 0 20px;
+    padding: 20px;
+    width: 300px !important;
+}
 @media screen and (max-width: 1000px) {
     .brands{
         display: block;        
@@ -58,4 +75,12 @@ margin: 0 auto;
         display: block;
 
     }
+  }
+  @media screen and (max-width: 400px) {
+    .myOrderBtn{
+        width: 100% !important;
+        padding: 10px;
+        margin: 0 auto !important;
+    }
+
   }
