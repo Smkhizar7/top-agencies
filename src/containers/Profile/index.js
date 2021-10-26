@@ -44,6 +44,11 @@ export default function Profile({children}) {
                     </ListItem>
                     <ListItem button>
                         <ListItemText>
+                            <Link className="our_Link" to="/orders">All Orders</Link>
+                        </ListItemText>
+                    </ListItem>
+                    <ListItem button>
+                        <ListItemText>
                             <Link className="our_Link" to="/pendingorders">Pending Orders</Link>
                         </ListItemText>
                     </ListItem>
