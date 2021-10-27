@@ -1,19 +1,23 @@
 import { Formik } from 'formik';
 import { Link, useHistory } from 'react-router-dom'
-import { signInWithEmailAndPassword, auth } from '../../confiq/Firebase';
+import { signInWithEmailAndPassword, auth,onAuthStateChanged } from '../../confiq/Firebase';
 import "./css/style.css"
 import Swal from "sweetalert2"
 import { BasicButtons, Catergory, MyInputText, NavBar } from "../../components"
 
-
-
 let Login = () => {
     const history = useHistory();
-    const Btn= "573a39"
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            history.push('/dashboard')
+        } else {
+            console.log("teri Maa ki ankh")
+        }
+    });
     return (
         <>
         <NavBar/>
-        <Catergory/>
+        {/* <Catergory/> */}
         <div className="myContainer mt-20">
             <Formik
                 initialValues={{ email: '', password: '' }}
@@ -37,6 +41,7 @@ let Login = () => {
                 }}
                 onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
+                        
                         signInWithEmailAndPassword(auth, values.email, values.password)
                             .then((res) => {
                                 // setLoading(false)
@@ -45,7 +50,7 @@ let Login = () => {
                                     'User as been sign in successfully!',
                                     'success'
                                 )
-                                history.push('/')
+                                history.push('/dashboard')
                             })
                             .catch((error) => {
                                 console.log(error.message)

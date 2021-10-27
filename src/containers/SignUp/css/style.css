@@ -35,3 +35,7 @@
 .link :hover{
     background-color: #bcaaa4 !important;
 }
+.error{
+    color: red;
+    font-size: 12px;
+}

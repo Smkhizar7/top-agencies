@@ -26,7 +26,7 @@ const DrawerHeader = styled(Paper)(({ theme }) => ({
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
 }));
-export default function Profile({children}) {
+export default function Profile({children,user}) {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -35,7 +35,7 @@ export default function Profile({children}) {
                 <Grid item xs={3}>
                     <DrawerHeader className="d_Header">
                         {/* <img className="" src="" alt="" /> */}
-                        <h1>Jiye Bhutto</h1>
+                        <h1>{user}</h1>
                     </DrawerHeader>
                     <ListItem button>
                         <ListItemText>

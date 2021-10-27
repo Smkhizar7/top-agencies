@@ -5,6 +5,8 @@ import { Link, useHistory } from 'react-router-dom'
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
+import { auth, onAuthStateChanged } from '../../confiq/Firebase';
+
 
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -13,6 +15,15 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 export default function Dashboard() {
+    const history = useHistory();
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            console.log(user)
+        } else {
+            history.push('/')
+        }
+    });
     return (
         <>
             <Grid
@@ -31,7 +42,7 @@ export default function Dashboard() {
                     <ListItem className="orders" button>
                         <Link to="/orderhistory" className="box"><h4>Orders History</h4></Link>
                     </ListItem>
-                    
+
                 </Grid>
             </Grid>
         </>
