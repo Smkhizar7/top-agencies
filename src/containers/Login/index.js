@@ -3,21 +3,22 @@ import { Link, useHistory } from 'react-router-dom'
 import { signInWithEmailAndPassword, auth,onAuthStateChanged } from '../../confiq/Firebase';
 import "./css/style.css"
 import Swal from "sweetalert2"
-import { BasicButtons, Catergory, MyInputText, NavBar } from "../../components"
+import { BasicButtons, MyInputText, NavBar } from "../../components"
+import { useState } from "react";
 
 let Login = () => {
+    const [errorMsg, setErrorMsg] = useState(false);
     const history = useHistory();
+    const [loading, setLoading] = useState(false);
     onAuthStateChanged(auth, (user) => {
         if (user) {
             history.push('/dashboard')
         } else {
-            console.log("teri Maa ki ankh")
         }
     });
     return (
         <>
         <NavBar/>
-        {/* <Catergory/> */}
         <div className="myContainer mt-20">
             <Formik
                 initialValues={{ email: '', password: '' }}
@@ -41,10 +42,10 @@ let Login = () => {
                 }}
                 onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
-                        
+                        setLoading(true)
                         signInWithEmailAndPassword(auth, values.email, values.password)
                             .then((res) => {
-                                // setLoading(false)
+                                setLoading(false)
                                 Swal.fire(
                                     'Sign In!',
                                     'User as been sign in successfully!',
@@ -53,7 +54,7 @@ let Login = () => {
                                 history.push('/dashboard')
                             })
                             .catch((error) => {
-                                console.log(error.message)
+                                setErrorMsg(error.message)
                             })
                         setSubmitting(false);
                     }, 400);
@@ -101,7 +102,8 @@ let Login = () => {
                             />
                         </div>
                         <div className="myBtn">
-                            <BasicButtons type="submit" variant="contained" disabled={isSubmitting} fullWidth= "true" >Login</BasicButtons>                             </div>
+                        {errorMsg ? <div className="error">User does not exist</div> : null}
+                            <BasicButtons type="submit" variant="contained" disabled={isSubmitting} fullWidth= "true" >{loading ? "Loading..." : "Login"}</BasicButtons>                             </div>
                         <div className="myBtn">
                             <Link className="link" to="/signup">Register Now</Link>
                         </div>

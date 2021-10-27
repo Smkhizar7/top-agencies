@@ -6,17 +6,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Drawer from '@mui/material/Drawer';
 import "./css/style.css"
-import { Dashboard, NavBar, Slider } from "../../components";
+import { NavBar } from "../../components";
 import { Link, useHistory } from 'react-router-dom'
-import { propTypes } from "react-bootstrap/esm/Image";
-
-
-const Item = styled(Paper)(({ theme }) => ({
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-}));
 
 const DrawerHeader = styled(Paper)(({ theme }) => ({
     display: 'flex',
@@ -24,8 +15,10 @@ const DrawerHeader = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
 }));
+
+
 export default function Profile({children,user}) {
 
     return (
@@ -35,7 +28,7 @@ export default function Profile({children,user}) {
                 <Grid item xs={3}>
                     <DrawerHeader className="d_Header">
                         {/* <img className="" src="" alt="" /> */}
-                        <h1>{user}</h1>
+                        <h4>{user}</h4>
                     </DrawerHeader>
                     <ListItem button>
                         <ListItemText>

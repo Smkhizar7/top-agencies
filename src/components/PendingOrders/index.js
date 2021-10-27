@@ -8,9 +8,8 @@ import Grid from "@mui/material/Grid"
 export default function PendingOrders() {
     const [pendingOrders, setPendingOrder] = useState([]);
     useEffect(() => {
-        console.log("UseEffect start")
         const q = query(collection(db, "orders"), where("orderStatus", "==", "pending"));
-        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        onSnapshot(q, (querySnapshot) => {
             const orders = [];
             querySnapshot.forEach((doc) => {
                 orders.push(doc.data());

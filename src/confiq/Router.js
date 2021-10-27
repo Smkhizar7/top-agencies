@@ -1,18 +1,35 @@
-
 import {
     BrowserRouter as Router,
     Switch,
     Route,
 } from "react-router-dom";
-import { Login, SignUp, Home, Profile, Orders } from "../containers/index.js";
-import { Dashboard, PendingOrders, CurrentOrders,OrderHistory } from "../components/index.js"
+import { Login, SignUp, Profile, Orders } from "../containers/index.js";
+import { Dashboard, PendingOrders, CurrentOrders, OrderHistory } from "../components/index.js"
+import { auth, onAuthStateChanged, db, collection, query, where, onSnapshot } from './Firebase.js';
+import { useState,useEffect } from "react";
+
+
+
 
 function AppRouter() {
-const userName="Ponka"
+
+    const [userName, setUserName] = useState('');
+    useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            const q = query(collection(db, "users"), where("userId", "==", user.uid));
+            onSnapshot(q, (querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    setUserName(doc.data().companyName)
+                });
+            });
+        } else {
+        }
+    })
+},[])
     return (
         <Router>
             <Switch>
-                {/* <Route exact path="/" component={NavBar} /> */}
                 <Route exact path="/profile" component={Profile} />
                 <Route exact path="/" component={Login} />
                 <Route exact path="/signup" component={SignUp} />
@@ -20,19 +37,17 @@ const userName="Ponka"
                     <Profile user={userName}><Dashboard /></Profile>
                 </Route>
                 <Route exact path="/orders">
-                    <Profile><Orders /></Profile>
+                    <Profile user={userName}><Orders /></Profile>
                 </Route>
                 <Route exact path="/pendingorders">
-                    <Profile><PendingOrders /></Profile>
+                    <Profile user={userName}><PendingOrders /></Profile>
                 </Route>
                 <Route exact path="/currentorders">
-                    <Profile><CurrentOrders /></Profile>
+                    <Profile user={userName}><CurrentOrders /></Profile>
                 </Route>
                 <Route exact path="/orderhistory">
-                    <Profile><OrderHistory /></Profile>
+                    <Profile user={userName}><OrderHistory /></Profile>
                 </Route>
-
-
             </Switch>
         </Router>
     )

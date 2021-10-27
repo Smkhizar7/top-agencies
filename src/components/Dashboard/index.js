@@ -19,7 +19,6 @@ export default function Dashboard() {
 
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            console.log(user)
         } else {
             history.push('/')
         }

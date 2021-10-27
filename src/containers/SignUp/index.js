@@ -1,19 +1,10 @@
-// import { useState } from 'react';
 import { Formik } from 'formik';
-// import { Container, Row, Col } from "react-bootstrap";
 import { Link, useHistory } from 'react-router-dom'
 import { createUserWithEmailAndPassword, auth, db, collection, doc, setDoc, onAuthStateChanged } from '../../confiq/Firebase';
 import "./css/style.css"
 import Swal from "sweetalert2"
-import { MyInputText, BasicButtons, NavBar, Catergory } from "../../components"
+import { MyInputText, BasicButtons, NavBar,} from "../../components"
 import { useState } from "react";
-
-
-
-
-
-
-
 
 
 let SignUp = () => {
@@ -24,13 +15,12 @@ let SignUp = () => {
         if (user) {
             history.push('/dashboard')
         } else {
-            history.push('/')
+      
         }
     });
     return (
         <>
             <NavBar />
-            {/* <Catergory /> */}
             <div className="myContainer mt-20">
                 <Formik
                     initialValues={{ companyName: '', ownerName: '', email: '', password: '', contactPerson: '', contactNum: '' }}
