@@ -20,7 +20,7 @@ export default function PendingOrders() {
     }, [])
     return (
         <>
-                <Grid className="mt-20 table_div" container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                <Grid className="mt-20 table" container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                     <div className="pendingDiv">
                         <h1>Pending Orders</h1>
                     </div>

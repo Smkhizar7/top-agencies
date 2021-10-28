@@ -16,7 +16,6 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import "./css/style.css"
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 const drawerWidth = 240;
 
@@ -24,7 +23,7 @@ const drawerWidth = 240;
 
 const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
-    minHeight:'82px',
+    minHeight: '82px',
     alignItems: 'center',
     padding: theme.spacing(0, 1),
     justifyContent: 'flex-start',
@@ -33,7 +32,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 
 
-function NavBar({children,user}) {
+function NavBar({ children, user }) {
     const theme = useTheme();
 
     const [open, setOpen] = useState(false);
@@ -57,93 +56,102 @@ function NavBar({children,user}) {
     }
     return (
         <>
-        <Navbar className="navBar">
-            <Container fluid>
-                <Navbar.Brand href="#home" className="logo" ><img className="img" src={Logo} alt="" /></Navbar.Brand>
-                {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
-                <Navbar >
-                    <Nav>
+            <Navbar className="navBar">
+                <Container fluid>
+                    <Navbar.Brand href="#home" className="logo" ><img className="img" src={Logo} alt="" /></Navbar.Brand>
+                    {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
+                    <Navbar >
+                        <Nav>
 
-                        <div className={open ? "mr-100" : "my_menu"}>
-                            {auth.currentUser ? null : <Link className="menuItem1" to="/signup">Register</Link>
-                            }
-                            {/* <Link className="menuItem1" to="/signup">Register</Link> */}
-                            {auth.currentUser ? <button className="menuItem1" onClick={() => logOut()} >
-                                Log Out
-                            </button> :
-                                <Link className="menuItem1" to="/">
-                                    Sign In
-                                </Link>}
-                        </div>
-                        {auth.currentUser ?
-                            <IconButton
-                                color="inherit"
-                                aria-label="open drawer"
-                                onClick={handleDrawerOpen}
-                                edge="start"
-                                sx={{ mr: 2, ...(open && { display: 'none' }) }}
+                            <div className={open ? "mr-100" : "my_menu"}>
+                                {auth.currentUser ? null : <Link className="menuItem1" to="/signup">Register</Link>
+                                }
+                                {/* <Link className="menuItem1" to="/signup">Register</Link> */}
+                                {auth.currentUser ? <button className="menuItem1" onClick={() => logOut()} >
+                                    Log Out
+                                </button> :
+                                    <Link className="menuItem1" to="/">
+                                        Sign In
+                                    </Link>}
+                            </div>
+                            {auth.currentUser ?
+                                <IconButton
+                                    color="inherit"
+                                    aria-label="open drawer"
+                                    onClick={handleDrawerOpen}
+                                    edge="start"
+                                    sx={{ mr: 2, ...(open && { display: 'none' }) }}
+                                >
+                                    <MenuIcon />
+                                </IconButton> : null}
+                            <Drawer
+                                sx={{
+                                    width: 0,
+                                    flexShrink: 0,
+                                    '& .MuiDrawer-paper': {
+                                        width: drawerWidth,
+                                        boxSizing: 'border-box',
+                                    },
+                                }}
+                                variant="persistent"
+                                anchor="right"
+                                open={open}
                             >
-                                <MenuIcon />
-                            </IconButton> : null}
-                        <Drawer
-                            sx={{
-                                width: 0,
-                                flexShrink: 0,
-                                '& .MuiDrawer-paper': {
-                                    width: drawerWidth,
-                                    boxSizing: 'border-box',
-                                },
-                            }}
-                            variant="persistent"
-                            anchor="right"
-                            open={open}
-                        >
-                            <DrawerHeader>
-                                <IconButton onClick={handleDrawerClose}>
-                                    {theme.direction === 'ltr' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-                                </IconButton>
-                                <h5>{user}</h5>
-                            </DrawerHeader>
-                            <Divider />
-                            <ListItem button>
-                                <ListItemText>
-                                    <Link className="our_Link" to="/dashboard">DashBoard</Link>
-                                </ListItemText>
-                            </ListItem>
-                            <ListItem button>
-                                <ListItemText>
-                                    <Link className="our_Link" to="/pendingorders">Pending Orders</Link>
-                                </ListItemText>
-                            </ListItem>
-                            <ListItem button>
-                                <ListItemText>
-                                    <Link className="our_Link" to="/currentorders">Current Order</Link>
-                                </ListItemText>
-                            </ListItem>
-                            <ListItem button>
-                                <ListItemText>
-                                    <Link className="our_Link" to="/orderhistory">Order History</Link>
-                                </ListItemText>
-                            </ListItem>
-                            <List>
+                                <DrawerHeader>
+                                    <IconButton onClick={handleDrawerClose}>
+                                        {theme.direction === 'ltr' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                                    </IconButton>
+                                    <h5>{user}</h5>
+                                </DrawerHeader>
+                                <Divider />
+
                                 <div className="sideBtn">
-                                    <ListItem button key={"Construction Tools"}>
-                                        <ListItemIcon>
-                                            <LocationCityIcon />
-                                        </ListItemIcon>
-                                        <ListItemText primary={"Construction Tools"} />
+                                    <ListItem button>
+                                        <ListItemText>
+                                            <Link className="our_Link" to="/dashboard">DashBoard</Link>
+                                        </ListItemText>
                                     </ListItem>
                                 </div>
-                            </List>
-                        </Drawer>
-                    </Nav>
-                </Navbar>
-            </Container>
-        </Navbar>
-        <div className="content_Body">
+                                <div className="sideBtn">
+                                    <ListItem button>
+                                        <ListItemText>
+                                            <Link className="our_Link" to="/pendingorders">Pending Orders</Link>
+                                        </ListItemText>
+                                    </ListItem>
+                                </div>
+                                <div className="sideBtn">
+                                    <ListItem button>
+                                        <ListItemText>
+                                            <Link className="our_Link" to="/currentorders">Current Order</Link>
+                                        </ListItemText>
+                                    </ListItem>
+                                </div>
+                                <div className="sideBtn">
+                                    <ListItem button>
+                                        <ListItemText>
+                                            <Link className="our_Link" to="/orderhistory">Order History</Link>
+                                        </ListItemText>
+                                    </ListItem>
+                                </div>
+                                <List>
+                                    <div className="sideBtn">
+                                        <ListItem button key={"Construction Tools"}>
+                                            <ListItemIcon>
+                                                <LocationCityIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary={"Construction Tools"} />
+                                        </ListItem>
+                                    </div>
+                                </List>
+                            </Drawer>
+                        </Nav>
+                    </Navbar>
+                </Container>
+            </Navbar>
+            <div className="content_Body">
                 {children}
-        </div>
-                </>
+            </div>
+        </>
     )
 }
 
