@@ -18,14 +18,7 @@
 .myTool{
     justify-content: space-between !important;
 }
-.d_Header{
-    justify-content: space-around !important;
-    min-height: 80px !important;
-    width: 100%;
-}
-.d_Header > img{
-width: 150px;
-}
+
 .sideBtn{
     color: #583A39 !important;
 }

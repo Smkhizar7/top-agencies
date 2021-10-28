@@ -6,6 +6,7 @@ import React from 'react';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import { auth, onAuthStateChanged } from '../../confiq/Firebase';
+import { NavBar } from "..";
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -16,7 +17,6 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 export default function Dashboard() {
     const history = useHistory();
-
     onAuthStateChanged(auth, (user) => {
         if (user) {
         } else {
@@ -25,12 +25,6 @@ export default function Dashboard() {
     });
     return (
         <>
-            <Grid
-                container
-                direction="row"
-                justifyContent="space-between"
-                alignItems="flex-start"
-                item xs={9}>
                 <Grid className="mt-20 abc" container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                     <ListItem className="orders" button>
                         <Item className="box"><h4>Pending Orders</h4></Item>
@@ -42,7 +36,6 @@ export default function Dashboard() {
                         <Link to="/orderhistory" className="box"><h4>Orders History</h4></Link>
                     </ListItem>
 
-                </Grid>
             </Grid>
         </>
     )

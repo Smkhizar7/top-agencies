@@ -10,6 +10,16 @@
     width: 200px;
     margin-left: 20px !important;
 }
+.mr-100{
+    margin-right: 250px;
+    display: flex;
+}
+.my_menu{
+    display: flex;
+}
+.content_Body{
+    width: 100%;
+}
 .img{
     width: 100%;
 }
