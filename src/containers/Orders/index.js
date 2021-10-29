@@ -12,7 +12,7 @@ import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
-import { db, collection, doc, setDoc } from "../../confiq/Firebase";
+import { auth,db, collection, doc, setDoc } from "../../confiq/Firebase";
 
 const MySelect = ({ label, ...props }) => {
     const [field, meta] = useField(props);
@@ -23,6 +23,7 @@ const MySelect = ({ label, ...props }) => {
 
 
 function MyVerticallyCenteredModal(props) {
+    const userId = auth.currentUser?.uid;
     const [loading, setLoading] = useState(false);
     const Sigma = Yup.object({
         projectName: Yup.string()
@@ -84,6 +85,8 @@ function MyVerticallyCenteredModal(props) {
                         setLoading(true);
                         await setDoc(newCityRef, {
                             orderId: newCityRef.id,
+                            userId:userId,
+                            deliveredOrder:0,
                             ...values,
                             orderStatus: "pending"
                         })

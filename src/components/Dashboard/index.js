@@ -27,10 +27,14 @@ export default function Dashboard() {
         <>
                 <Grid className="mt-20 abc" container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                     <ListItem className="orders" button>
-                        <Item className="box"><h4>Pending Orders</h4></Item>
+                        <Link to="/pendingorders" className="box">
+                            <Item className="box"><h4>Pending Orders</h4></Item>
+                        </Link>
                     </ListItem>
                     <ListItem className="orders" button >
-                        <Item className="box"><h4>Accepted Orders</h4></Item>
+                        <Link to="/currentorders" className="box">
+                            <Item className="box"><h4>Accepted Orders</h4></Item>
+                        </Link>
                     </ListItem>
                     <ListItem className="orders" button>
                         <Link to="/orderhistory" className="box"><h4>Orders History</h4></Link>
