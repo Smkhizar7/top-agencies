@@ -14,7 +14,7 @@ import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { db, doc, updateDoc } from "../../confiq/Firebase";
-
+import {BasicModal} from '../index';
 
 function createData(name, calories, fat, carbs, protein, price) {
     return {
@@ -165,7 +165,9 @@ export default function CollapsibleTable({rows}) {
                             <TableCell align="right">{row.deliveredOrder}</TableCell>
                             <TableCell align="right">{Number(row.quantity)-Number(row.deliveredOrder)}</TableCell>
                             <TableCell align="right">{row.orderStatus}</TableCell>
-                            <TableCell align="right"><button>Edit</button></TableCell>
+                            <TableCell align="right">
+                                <BasicModal ButtonText="Edit" order={row} ></BasicModal>
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
