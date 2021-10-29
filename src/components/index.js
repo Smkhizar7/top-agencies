@@ -9,6 +9,7 @@ import PendingOrders from "./PendingOrders";
 import OrderHistory from "./OrderHistory";
 import CurrentOrders from "./CurrentOrders";
 import DenseTable from './Table';
+import BasicModal from './Modal';
 
 export{
     BasicButtons,
@@ -21,5 +22,6 @@ export{
     PendingOrders,
     OrderHistory,
     CurrentOrders,
-    DenseTable
+    DenseTable,
+    BasicModal
 }
