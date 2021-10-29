@@ -163,7 +163,7 @@ export default function CollapsibleTable({rows}) {
                             <TableCell align="right">{row.brandType}</TableCell>
                             <TableCell align="right">{row.quantity}</TableCell>
                             <TableCell align="right">{row.deliveredOrder}</TableCell>
-                            <TableCell align="right">{row.quantiy-row.deliveredOrder}</TableCell>
+                            <TableCell align="right">{Number(row.quantity)-Number(row.deliveredOrder)}</TableCell>
                             <TableCell align="right">{row.orderStatus}</TableCell>
                             <TableCell align="right"><button>Edit</button></TableCell>
                         </TableRow>

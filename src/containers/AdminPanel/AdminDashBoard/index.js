@@ -6,6 +6,7 @@ import React from 'react';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import { auth, onAuthStateChanged } from '../../confiq/Firebase';
+import { useSelector } from "react-redux";
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -16,7 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 export default function Dashboard() {
     const history = useHistory();
-
+    const store = useSelector(state => state);
     onAuthStateChanged(auth, (user) => {
         if (user) {
         } else {

@@ -2,21 +2,76 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
+    Redirect,
+    useLocation
 } from "react-router-dom";
-import { Login, SignUp, Profile, Orders } from "../containers/index.js";
-import { Dashboard, PendingOrders, CurrentOrders, OrderHistory, NavBar } from "../components/index.js"
-import { auth, onAuthStateChanged, db, collection, query, where, onSnapshot } from './Firebase.js';
-import { useState, useEffect } from "react";
+import {
+    Login, 
+    SignUp, 
+    Profile, 
+    Orders,
+    NotFound 
+} from "../containers/index.js";
+import { 
+    Dashboard, 
+    PendingOrders, 
+    CurrentOrders, 
+    OrderHistory, 
+    NavBar 
+} from "../components/index.js"
+import { 
+    auth, 
+    onAuthStateChanged, 
+    db, 
+    collection, 
+    query, 
+    where, 
+    onSnapshot 
+} from './Firebase.js';
+import { 
+    useState, 
+    useEffect, 
+    Component
+} from "react";
 
+function PrivateRoute({component:Component,auth, ...rest}){
+    return <Route {...rest}
+        component={({location})=>
+            auth?
+            <Component/>
+            :
+            <Redirect to={{
+                pathname:"/",
+                state:{
+                    from:location.pathname,
+                }
+            }}
+            />
+        }
+    />
+}
 
-
-
+function PublicRoute({component:Component,auth, ...rest}){
+    const location = useLocation();
+    return <Route
+        {...rest}
+        component={()=>
+        !auth?
+        <Component/>
+        :
+        <Redirect
+        to={location.state?.from?location.state.from:"/dashboard"}
+        />
+        }
+    />
+}
 function AppRouter() {
-
     const [userName, setUserName] = useState('');
+    const [isAuth, setIsAuth] = useState(false);
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
+                setIsAuth(true);
                 const q = query(collection(db, "users"), where("userId", "==", user.uid));
                 onSnapshot(q, (querySnapshot) => {
                     querySnapshot.forEach((doc) => {
@@ -24,30 +79,34 @@ function AppRouter() {
                     });
                 });
             } else {
+                setIsAuth(false);
             }
         })
     }, [])
     return (
         <Router>
             <Switch>
-                <Route exact path="/profile" component={Profile} />
-                <Route exact path="/" component={Login} />
-                <Route exact path="/signup" component={SignUp} />
-                <Route exact path="/dashboard">
+                <PublicRoute auth={isAuth} exact path="/" component={Login} />
+                <PublicRoute auth={isAuth} exact path="/signup" component={SignUp} />
+                <PrivateRoute auth={isAuth} exact path="/dashboard">
                     <NavBar user={userName}><Dashboard /></NavBar>
-                </Route>
-                <Route exact path="/orders">
+                </PrivateRoute>
+                <PrivateRoute auth={isAuth} exact path="/profile">
+                    <Profile />    
+                </PrivateRoute>
+                <PrivateRoute auth={isAuth} exact path="/orders">
                     <Orders />
-                </Route>
-                <Route exact path="/pendingorders">
+                </PrivateRoute>
+                <PrivateRoute auth={isAuth} exact path="/pendingorders">
                     <NavBar user={userName}><PendingOrders /></NavBar>
-                </Route>
-                <Route exact path="/currentorders">
+                </PrivateRoute>
+                <PrivateRoute auth={isAuth} exact path="/currentorders">
                     <CurrentOrders />
-                </Route>
-                <Route exact path="/orderhistory">
+                </PrivateRoute>
+                <PrivateRoute auth={isAuth} exact path="/orderhistory">
                     <OrderHistory />
-                </Route>
+                </PrivateRoute>
+                <Route path="*" exact component={NotFound} />
             </Switch>
         </Router>
     )
