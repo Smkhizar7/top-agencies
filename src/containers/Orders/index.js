@@ -81,6 +81,15 @@ function MyVerticallyCenteredModal(props) {
                     }}
                     validationSchema={Sigma}
                     onSubmit={async (values, actions) => {
+                        let collectionName;
+                        let date = new Date();
+                        let month = date.getMonth()+1;
+                        let year = date.getFullYear();
+                        if(month>6){
+                            collectionName = year+"-"+(year+1)
+                        }else if(month<=6){
+                            collectionName = (year-1)+"-"+year;
+                        }
                         const newCityRef = doc(collection(db, "orders"));
                         setLoading(true);
                         await setDoc(newCityRef, {
